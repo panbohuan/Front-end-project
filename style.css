@@ -1,13 +1,12 @@
-.sidebar {
+.sidebar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  width: 60px; 
+  width: 50px; 
   height: 100vh; 
   background-color: #fff; 
   border-right: 1px solid #eee; 
-  padding: 20px 0; 
+  padding: 10px 0; 
   box-sizing: border-box；
 }
 
@@ -23,8 +22,36 @@
   color: #333; 
   text-decoration: none; 
   transition: all 0.3s ease; 
+  position: relative;
 }
 
+.sidebar-item::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #000000;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      opacity: 0; 
+      transition: opacity 0.1s;
+      white-space: nowrap;
+    }
+    
+    .sidebar-item:hover::after {
+      opacity: 0.5;
+    }
+    .pinterest-logo::after { content: "Pinterest";
+     left: 40px;
+    }
+    .home-icon::after { content: "主页"; }
+    .plus-icon::after { content: "创建"; }
+    .bell-icon::after { content: "更新"; }
+    .chat-icon::after { content: "信息"; }
+    .setting-icon::after { content: "设置"; }
 
 .sidebar-item:hover {
   background-color: #f0f0f0; 
@@ -44,3 +71,34 @@
 .sidebar-item i {
   font-size: 20px;
 }
+
+.sidebar {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 10px;
+    }
+
+.search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px 12px;
+      width: 75vw;
+      margin-left: 5px;
+      margin-top: 20px;
+
+    }
+        
+.search-icon {
+      color: #999;
+      margin-right: 8px;
+    }
+    
+.search-input {
+      flex: 1; 
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
