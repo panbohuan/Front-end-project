@@ -1,163 +1,330 @@
-.sidebar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50px; 
-  height: 100vh; 
-  background-color: #fff; 
-  border-right: 1px solid #eee; 
-  padding: 10px 0; 
-  box-sizing: border-box；
-}
-
-
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 20%;
-  margin: 10px 0; 
-  color: #333; 
-  text-decoration: none; 
-  transition: all 0.3s ease; 
-  position: relative;
-}
-
-.sidebar-item:hover::after {
-      content: "";
-      position: absolute;
-      right: -80px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #000000;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 4px;
-      font-size: 14px;
-      opacity: 0; 
-      transition: opacity 0.1s;
-      white-space: nowrap;
-    }
-    
-    .sidebar-item:hover::after {
-      opacity: 0.5;
-    }
-    .pinterest-logo:hover::after { content: "Pinterest";
-     left: 40px;
-    }
-    .home-icon:hover::after { content: "主页"; }
-    .plus-icon:hover::after { content: "创建"; }
-    .bell-icon:hover::after { content: "更新"; }
-    .chat-icon:hover::after { content: "信息"; }
-    .setting-icon:hover::after { content: "设置"; }
-
-.sidebar-item:hover {
-  background-color: #f0f0f0; 
-}
-
-
-.sidebar-item.pin {
-  color: #f70328;
-}
-
-
-.spacer {
-  flex-grow: 0.9; 
-}
-
-
-.sidebar-item i {
-  font-size: 20px;
-}
-
-.sidebar {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      padding: 10px;
-    }
-
-.search-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 8px 12px;
-      width: 87vw;
-      margin-left: 5px;
-      margin-top: 20px;
-      background-color: #f1f0f0;
-    }
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
         
-.search-icon {
-      color: #999;
-      margin-right: 8px;
-    }
-    
-.search-input {
-      flex: 1; 
-      border: none;
-      outline: none;
-      font-size: 14px;
-      background-color:#f1f0f0 ;
-    }
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        /* 顶部导航栏样式 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 70px;
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px; 
+            height: 100vh; 
+            background-color: #fff; 
+            border-right: 1px solid #eee; 
+            padding: 10px 0; 
+            box-sizing: border-box;
+        }
 
-.fa-circle-user{
-  font-size: 30px;
-  margin-top: 22px;
-  margin-left: 10px;
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 20%;
+            margin: 10px 0; 
+            color: #333; 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            position: relative;
+        }
 
-}
+        .sidebar-item:hover::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #000000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0; 
+            transition: opacity 0.1s;
+            white-space: nowrap;
+        }
+        
+        .sidebar-item:hover::after {
+            opacity: 0.5;
+        }
+        
+        .pinterest-logo:hover::after { 
+            content: "Pinterest";
+            left: 40px;
+        }
+        
+        .home-icon:hover::after { content: "主页"; }
+        .plus-icon:hover::after { content: "创建"; }
+        .bell-icon:hover::after { content: "更新"; }
+        .chat-icon:hover::after { content: "信息"; }
+        .setting-icon:hover::after { content: "设置"; }
 
-.fa-circle-user:hover::after {
-  content: "个人";
-  position: absolute;
-  right: 20px;
-  margin-top: 40px;
-  margin-right: 47PX;
-  margin-left: 25px;
-  background-color: #000000;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  opacity: 0; 
-  transition: opacity 0.1s;
-  white-space: nowrap;
+        .sidebar-item:hover {
+            background-color: #f0f0f0; 
+        }
 
-}
+        .sidebar-item.pin {
+            color: #f70328;
+        }
 
-.fa-circle-user:hover::after {
-  opacity: 0.5;
-}
+        .spacer {
+            flex-grow: 0.9; 
+        }
 
-.chevron-up{
-  font-size: 20px;
-  margin-top: 22px;
-  margin-left: 20px;
+        .sidebar-item i {
+            font-size: 20px;
+        }
+        
+        /* 搜索框样式 */
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            padding: 8px 12px;
+            width: 87vw;
+            margin-left: 5px;
+            margin-top: 20px;
+            background-color: #f1f0f0;
+        }
+        
+        .search-icon {
+            color: #999;
+            margin-right: 8px;
+        }
+        
+        .search-input {
+            flex: 1; 
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color:#f1f0f0 ;
+        }
+        
+        /* 个人头像样式 */
+        .fa-circle-user{
+            font-size: 30px;
+            margin-top: 22px;
+            margin-left: 10px;
+        }
 
-}
+        .fa-circle-user:hover::after {
+            content: "个人";
+            position: absolute;
+            right: 20px;
+            margin-top: 40px;
+            margin-right: 47PX;
+            margin-left: 25px;
+            background-color: #000000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0; 
+            transition: opacity 0.1s;
+            white-space: nowrap;
+        }
 
-.fa-chevron-up:hover:after {
-  content: "账户";
-  position: absolute;
-  right: 10px;
-  margin-top: 37px;
-  margin-right: 10PX;
-  margin-left: 25px;
-  background-color: #000000;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  opacity: 0; 
-  transition: opacity 0.1s;
-  white-space: nowrap;
+        .fa-circle-user:hover::after {
+            opacity: 0.5;
+        }
 
-}
+        /* 向上箭头样式 */
+        .chevron-up{
+            font-size: 20px;
+            margin-top: 22px;
+            margin-left: 20px;
+        }
 
-.fa-chevron-up:hover::after {
-  opacity: 0.5;
-}
+        .fa-chevron-up:hover:after {
+            content: "账户";
+            position: absolute;
+            right: 10px;
+            margin-top: 37px;
+            margin-right: 10PX;
+            margin-left: 25px;
+            background-color: #000000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0; 
+            transition: opacity 0.1s;
+            white-space: nowrap;
+        }
+
+        .fa-chevron-up:hover::after {
+            opacity: 0.5;
+        }
+        
+        /* 主内容区域 */
+        .main-content {
+            display: flex;
+            margin-top: 70px;
+        }
+        
+        /* 侧边栏固定位置 */
+        .sidebar-fixed {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            width: 70px;
+            background-color: white;
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        
+        /* 瀑布流样式 */
+        .content-area {
+            margin-left: 70px;
+            padding: 20px;
+            width: calc(100% - 70px);
+        }
+        
+        .masonry {
+            column-count: 5;
+            column-gap: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 15px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            background-color: white;
+            position: relative;
+        }
+        
+        .masonry-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .masonry-img {
+            width: 100%;
+            display: block;
+        }
+        
+        .masonry-info {
+            padding: 12px;
+        }
+        
+        .masonry-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .masonry-author {
+            color: #666;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .masonry-author img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .masonry-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .masonry-item:hover .masonry-actions {
+            opacity: 1;
+        }
+        
+        .masonry-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            color: #555;
+            transition: all 0.2s;
+        }
+        
+        .masonry-btn:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.1);
+        }
+        
+        .masonry-btn.save {
+            background-color: #e60023;
+            color: white;
+        }
+        
+        .masonry-btn.save:hover {
+            background-color: #ad081b;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .masonry {
+                column-count: 4;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .masonry {
+                column-count: 2;
+            }
+            .sidebar-fixed {
+                display: none;
+            }
+            .content-area {
+                margin-left: 0;
+                width: 100%;
+            }
+        }

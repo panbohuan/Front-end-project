@@ -10,49 +10,66 @@
 
 </head>
 <body>
- <aside class="sidebar">
-   <div class="sidebar-container">
-      <a href=" " class="sidebar-item pin pinterest-logo">
-        <i class="fab fa-pinterest"></i>
-      </a >
-
-      <a href="#" class="sidebar-item home-icon">
-        <i class="fas fa-home"></i>
-      </a >
-   
-      <a href="#" class="sidebar-item plus-icon">
-        <i class="fas fa-plus"></i>
-     </a >
+ <div class="top-nav">
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" class="search-input" placeholder="搜索">
+        </div>
+        
+        <!-- 个人头像 -->
+        <div class="person">
+            <i class="fa-regular fa-circle-user"></i>
+        </div>
+        
+        <!-- 向上箭头 -->
+        <div class="chevron-up">
+            <i class="fas fa-chevron-up"></i>
+        </div>
+    </div>
     
-      <a href="#" class="sidebar-item bell-icon">
-        <i class="fas fa-bell"></i>
-      </a >
-    
-      <a href="#" class="sidebar-item chat-icon">
-        <i class="fas fa-comment-dots"></i>
-      </a >
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!-- 固定侧边栏 -->
+        <div class="sidebar-fixed">
+            <div class="sidebar-container">
+                <a href=" " class="sidebar-item pin pinterest-logo">
+                    <i class="fab fa-pinterest"></i>
+                </a>
 
-      <div class="spacer"></div>
+                <a href="#" class="sidebar-item home-icon">
+                    <i class="fas fa-home"></i>
+                </a>
+            
+                <a href="#" class="sidebar-item plus-icon">
+                    <i class="fas fa-plus"></i>
+                </a>
+            
+                <a href="#" class="sidebar-item bell-icon">
+                    <i class="fas fa-bell"></i>
+                </a>
+            
+                <a href="#" class="sidebar-item chat-icon">
+                    <i class="fas fa-comment-dots"></i>
+                </a>
 
-      <a href="#" class="sidebar-item setting-icon">
-        <i class="fas fa-cog"></i>
-      </a >
+                <div class="spacer"></div>
+
+                <a href="#" class="sidebar-item setting-icon">
+                    <i class="fas fa-cog"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 瀑布流内容区域 -->
+        <div class="content-area">
+            <div class="masonry" id="masonry">
+                <!-- 瀑布流图片将通过JavaScript动态生成 -->
+            </div>
+        </div>
     </div>
-
-    <div class="search-box">
-    <i class="search-icon fas fa-search"></i>
-    <input type="text" class="search-input" placeholder="搜索">
-    </div>
-
-    <div class="person">
-    <i class="fa-regular fa-circle-user"></i>
-    </div>
-
-    <div class="chevron-up">
-    <i class="fas fa-chevron-up"></i>
-    </div>
-  </aside>
-
+    <script src="script.js"></script>
+ 
   
 </body>
 
