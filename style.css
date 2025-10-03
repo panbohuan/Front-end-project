@@ -25,7 +25,7 @@
   position: relative;
 }
 
-.sidebar-item::after {
+.sidebar-item:hover::after {
       content: "";
       position: absolute;
       right: -80px;
@@ -44,14 +44,14 @@
     .sidebar-item:hover::after {
       opacity: 0.5;
     }
-    .pinterest-logo::after { content: "Pinterest";
+    .pinterest-logo:hover::after { content: "Pinterest";
      left: 40px;
     }
-    .home-icon::after { content: "主页"; }
-    .plus-icon::after { content: "创建"; }
-    .bell-icon::after { content: "更新"; }
-    .chat-icon::after { content: "信息"; }
-    .setting-icon::after { content: "设置"; }
+    .home-icon:hover::after { content: "主页"; }
+    .plus-icon:hover::after { content: "创建"; }
+    .bell-icon:hover::after { content: "更新"; }
+    .chat-icon:hover::after { content: "信息"; }
+    .setting-icon:hover::after { content: "设置"; }
 
 .sidebar-item:hover {
   background-color: #f0f0f0; 
@@ -85,10 +85,10 @@
       border: 1px solid #ddd;
       border-radius: 4px;
       padding: 8px 12px;
-      width: 75vw;
+      width: 87vw;
       margin-left: 5px;
       margin-top: 20px;
-
+      background-color: #f1f0f0;
     }
         
 .search-icon {
@@ -101,4 +101,63 @@
       border: none;
       outline: none;
       font-size: 14px;
+      background-color:#f1f0f0 ;
     }
+
+.fa-circle-user{
+  font-size: 30px;
+  margin-top: 22px;
+  margin-left: 10px;
+
+}
+
+.fa-circle-user:hover::after {
+  content: "个人";
+  position: absolute;
+  right: 20px;
+  margin-top: 40px;
+  margin-right: 47PX;
+  margin-left: 25px;
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0; 
+  transition: opacity 0.1s;
+  white-space: nowrap;
+
+}
+
+.fa-circle-user:hover::after {
+  opacity: 0.5;
+}
+
+.chevron-up{
+  font-size: 20px;
+  margin-top: 22px;
+  margin-left: 20px;
+
+}
+
+.fa-chevron-up:hover:after {
+  content: "账户";
+  position: absolute;
+  right: 10px;
+  margin-top: 37px;
+  margin-right: 10PX;
+  margin-left: 25px;
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0; 
+  transition: opacity 0.1s;
+  white-space: nowrap;
+
+}
+
+.fa-chevron-up:hover::after {
+  opacity: 0.5;
+}
