@@ -12,37 +12,44 @@
 <body>
  <!-- 主容器 -->
     <div class="main-container">
-        <!-- 左侧边栏区域 - 固定位置 -->
+        <!-- 左侧边栏区域 -->
         <div class="sidebar-area">
-            <!-- 侧边栏导航 - 保留原有样式 -->
+            <!-- 侧边栏导航 -->
             <div class="sidebar-container">
+                <!-- Pinterest Logo -->
                 <a href=" " class="sidebar-item pin pinterest-logo">
                     <i class="fab fa-pinterest"></i>
                 </a>
 
+                <!-- 主页图标 -->
                 <a href="#" class="sidebar-item home-icon">
                     <i class="fas fa-home"></i>
                 </a>
-            
+
+                <!-- 探索图标 -->
                 <div class="sidebar-item plus-icon" id="create-btn">
                     <i class="fas fa-plus"></i>
                 </div>
-            
+
+                <!-- 通知图标 -->
                 <div class="sidebar-item bell-icon" id="update-btn">
                     <i class="fas fa-bell"></i>
                 </div>
-            
+
+                <!-- 消息图标 -->
                 <div class="sidebar-item chat-icon" id="message-btn">
                     <i class="fas fa-comment-dots"></i>
                 </div>
 
+                <!-- 占位符，用于将设置键顶到最下面 -->
                 <div class="spacer"></div>
 
+                <!-- 设置图标 -->
                 <a href="#" class="sidebar-item setting-icon">
                     <i class="fas fa-cog"></i>
                 </a>
                 
-                <!-- 创建面板 -->
+                <!-- 创建面板 点击后的内容 -->
                 <div class="sidebar-panel create-panel" id="create-panel">
                     <div class="panel-title">创造</div>
                     <div class="create-options">
@@ -89,20 +96,20 @@
         <div class="content-area">
             <!-- 顶部搜索区域 - 固定位置 -->
             <div class="top-search-area">
-                <!-- 搜索框 - 优化布局 -->
+                <!-- 搜索框 -->
                 <div class="search-box">
                     <i class="search-icon fas fa-search"></i>
                     <input type="text" class="search-input" placeholder="搜索">
                 </div>
                 
-                <!-- 用户区域 - 优化布局 -->
+                <!-- 用户区域 -->
                 <div class="user-area">
                     <!-- 个人头像 -->
                     <div class="person">
                         <i class="fa-regular fa-circle-user"></i>
                     </div>
                     
-                    <!-- 向上箭头 -->
+                    <!-- 账户信息 -->
                     <div class="chevron-up">
                         <i class="fas fa-chevron-up"></i>
                     </div>
@@ -112,8 +119,7 @@
             <!-- 瀑布流区域 - 在搜索区域下方 -->
             <div class="masonry-area">
                 <!-- 瀑布流内容区域 -->
-                <div class="masonry" id="masonry">
-                </div>
+                <div class="masonry" id="masonry"></div>
             </div>
         </div>
     </div>

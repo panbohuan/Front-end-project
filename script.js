@@ -31,7 +31,7 @@
                 // 创建图片容器
                 const item = document.createElement('div');
                 item.className = 'masonry-item';
-                item.dataset.id = image.id; // 设置图片ID
+                item.dataset.id = image.id; // 设置图片ID 其实不需要ID也行
                 
                 // 创建图片元素
                 const img = document.createElement('img');
@@ -46,7 +46,7 @@
                 
                 // 创建操作按钮
                 const actionButtons = document.createElement('div');
-                actionButtons.className = 'action-buttons';
+                actionButtons.className = 'action-buttons';//创建父元素
                 
                 const uploadBtn = document.createElement('div');
                 uploadBtn.className = 'action-btn';
@@ -81,7 +81,7 @@
             const updatePanel = document.getElementById('update-panel');
             const messagePanel = document.getElementById('message-panel');
             
-            let activePanel = null; // 记录当前打开的面板
+            var activePanel = null; // 记录当前打开的面板
             
             // 创建按钮点击事件
             createBtn.addEventListener('click', function(e) {
@@ -105,20 +105,39 @@
             function togglePanel(panel) {
                 if (activePanel === panel) {
                     // 如果点击的是已打开的面板，则关闭它
+                    //设置元素display属性为none,隐藏该元素
                     panel.style.display = 'none';
                     activePanel = null;
                 } else {
                     // 隐藏所有面板
+                    //当我点击的不是当前面板时，隐藏其他的面板
                     document.querySelectorAll('.sidebar-panel').forEach(p => {
                         p.style.display = 'none';
                     });
                     
                     // 显示当前面板
+                    // 设置元素可见并以块级元素展示
                     panel.style.display = 'block';
                     activePanel = panel;
                 }
             }
-            
+   // 状态1：没有面板打开
+// activePanel = null
+// panel = createPanel
+// activePanel === panel → null === createPanel → false
+
+   // 状态2：点击已打开的面板
+// activePanel = createPanel
+// panel = createPanel
+// activePanel === panel → createPanel === createPanel → true
+
+   // 状态3：点击不同的面板
+// activePanel = createPanel
+// panel = updatePanel
+// activePanel === panel → createPanel === updatePanel → false
+
+            //对于整个文档对象设置绑定事件监听器
+            //当用户点击页面的任何位置时，都会触发这个事件监听器
             // 点击页面其他区域关闭面板
             document.addEventListener('click', function() {
                 if (activePanel) {
@@ -146,8 +165,8 @@
             const commentInput = document.getElementById('comment-input');
             const submitComment = document.getElementById('submit-comment');
             
-            let liked = false; // 记录点赞状态
-            let comments = []; // 存储评论的数组
+            var liked = false; // 记录点赞状态
+            var comments = []; // 存储评论的数组
             
             // 为瀑布流图片添加点击事件监听
             document.addEventListener('click', function(e) {

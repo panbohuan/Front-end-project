@@ -1,15 +1,10 @@
+       /* 选择页面上所有的HTML元素，设置统一的样式 */
        * {
+            /* 移除所有元素默认的内外边距 */
             margin: 0;
             padding: 0;
+            /* border-box：width/height = 内容 + padding + border */
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            min-height: 100vh;
-            display: flex;
         }
         
         /* 主容器 */
@@ -25,10 +20,14 @@
             background-color: white;
             border-right: 1px solid #eee;
             display: flex;
+            /* 让子元素垂直排成一列 */
             flex-direction: column;
+            /* 瀑布流模型下侧边栏不滚动 */
             position: fixed;
             left: 0;
             top: 0;
+            /* 设置元素的层叠顺序，让侧边栏显示元素不会被遮盖 */
+            /* 数字越大优先级越高 */
             z-index: 1000;
             padding-top: 20px;
         }
@@ -46,6 +45,7 @@
             position: relative;
         }
 
+        /* 图标外部小方块的样式设置 */
         .sidebar-item {
             display: flex;
             align-items: center;
@@ -55,25 +55,31 @@
             border-radius: 20%;
             margin: 10px 0; 
             color: #333; 
+            /* 去除莫名其妙的文本装饰 */
             text-decoration: none; 
+            /* ease 先慢后快再慢 */
             transition: all 0.3s ease; 
             position: relative;
             cursor: pointer;
         }
 
         .sidebar-item:hover::after {
+            /* 使用伪元素时content属性必须设置 */
             content: "";
+            /* 相对于sidebar-item定位 */
             position: absolute;
-            right: -80px;
+            left: 50px;
             top: 50%;
+            /* 元素在垂直方向向上移动自身高度的50% */
             transform: translateY(-50%);
             background-color: #000000;
             color: #fff;
             padding: 8px 12px;
             border-radius: 4px;
-            font-size: 14px;
-            opacity: 0; 
+            /* 悬浮时方块的大小 */
+            font-size: 14px;           
             transition: opacity 0.1s;
+            /* 禁止换行 */
             white-space: nowrap;
         }
         
@@ -83,7 +89,7 @@
         
         .pinterest-logo:hover::after { 
             content: "Pinterest";
-            left: 40px;
+            left: 50px;
         }
         
         .home-icon:hover::after { content: "主页"; }
@@ -93,14 +99,16 @@
         .setting-icon:hover::after { content: "设置"; }
 
         .sidebar-item:hover {
-            background-color: #f0f0f0; 
+            background-color: #e3e1e1; 
         }
 
+        /* 单独设置Pinterest图标的颜色 */
         .sidebar-item.pin {
             color: #f70328;
         }
 
         .spacer {
+            /* 占据剩余空间的百分之90 */
             flex-grow: 0.9; 
         }
 
@@ -111,8 +119,9 @@
         /* 右侧内容区域 */
         .content-area {
             margin-left: 80px;
+            /* cale为计算函数，允许属性值计算 */
+            /* 父元素宽度的百分之一百减去侧边栏宽度80px */
             width: calc(100% - 80px);
-            min-height: 100vh;
         }
         
         /* 顶部搜索区域  */
@@ -125,9 +134,9 @@
             background-color: white;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
+            padding: 10px 20px;
             z-index: 900;
+            /* 水平偏移 垂直偏移 模糊半径 颜色选择 */
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
@@ -139,6 +148,7 @@
             border-radius: 24px;
             padding: 8px 16px;
             background-color: #f1f0f0;
+            /* 占据顶部所有区域 */
             flex: 1;
             margin-right: 20px;
         }
@@ -150,6 +160,7 @@
         
         .search-input {
             flex: 1; 
+            /* 去除原本搜索框的边框 */
             border: none;
             outline: none;
             font-size: 14px;
@@ -194,7 +205,7 @@
             opacity: 0.9;
         }
 
-        /* 向上箭头样式*/
+        /* 账户信息*/
         .chevron-up {
             position: relative;
         }
@@ -233,16 +244,21 @@
         
         /* 瀑布流样式 */
         .masonry {
+            /* 在pc端显示5列 */
             column-count: 5;
+            /* 图片与图片之间的间距 */
             column-gap: 15px;
             max-width: 1400px;
+            /* 上下外边距为0，左右自动居中 */
             margin: 0 auto;
         }
         
         .masonry-item {
+            /* 防止元素被截断，确保在同一列，若空间不足，移到下一列 */
             break-inside: avoid;
             margin-bottom: 15px;
             border-radius: 16px;
+            /* 内容溢出时直接隐藏 */
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -278,6 +294,7 @@
             text-align: center;
         }
         
+        /* 悬浮时出现保存按钮 */
         .masonry-item:hover .save-btn {
             opacity: 1;
         }
@@ -357,10 +374,13 @@
         .create-option {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 12px;
             background-color: #f5f5f5;
             border-radius: 8px;
+            /* 鼠标悬停时变成手型图标 */
             cursor: pointer;
+            /* transition 设置过渡效果 */
             transition: background-color 0.2s;
         }
         
@@ -377,10 +397,12 @@
             align-items: center;
             justify-content: center;
             margin-right: 12px;
+            /* font-weight 用于调整文本的粗细 */
             font-weight: bold;
         }
         
         .option-text {
+            /* 占据剩余的位置 */
             flex: 1;
         }
         
