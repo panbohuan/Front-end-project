@@ -171,6 +171,7 @@
             // 为瀑布流图片添加点击事件监听
             document.addEventListener('click', function(e) {
                 // 检查点击的是否是图片容器
+                // choset 从当前元素开始，向上遍历DOM树查找匹配选择器的最近祖先元素
                 const masonryItem = e.target.closest('.masonry-item');
                 if (masonryItem) {
                     // 获取被点击图片的ID和URL
@@ -183,9 +184,6 @@
             // 显示图片详情的函数
             function showImageDetail(imageId, imageSrc) {
                 detailImage.src = imageSrc; // 设置详情图片的URL
-                liked = false; // 重置点赞状态
-                likeButton.classList.remove('liked'); // 移除点赞样式
-                likeButton.innerHTML = '<i class="far fa-heart"></i><span>点赞</span>'; // 重置点赞按钮
                 
                 comments = []; // 清空评论
                 renderComments(); // 渲染评论列表

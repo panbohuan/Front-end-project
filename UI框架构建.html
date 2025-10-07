@@ -50,6 +50,7 @@
                 </a>
                 
                 <!-- 创建面板 点击后的内容 -->
+                 <!-- 利用css样式进行隐藏与调出 -->
                 <div class="sidebar-panel create-panel" id="create-panel">
                     <div class="panel-title">创造</div>
                     <div class="create-options">
@@ -126,19 +127,28 @@
     
     <!-- 图片详情页面 -->
     <div class="image-detail-overlay" id="image-detail">
+
+        <!-- 返回按键即文本 -->
         <div class="image-detail-header">
             <div class="back-button" id="back-button">
                 <i class="fas fa-arrow-left"></i>
                 <span>返回</span>
             </div>
         </div>
+
+        <!-- 图片与评论区域 -->
         <div class="image-detail-content">
             <div class="image-container">
+                <!-- 让javascript来动态加载图片 -->
                 <img src="" alt="详情图片" class="detail-image" id="detail-image">
             </div>
+
+            <!-- 点赞与评论区域 -->
             <div class="comments-section">
                 <div class="comments-header">
                     <div class="comments-title">评论</div>
+
+                    <!-- 点赞 -->
                     <div class="like-section">
                         <div class="like-button" id="like-button">
                             <i class="far fa-heart"></i>
@@ -146,11 +156,15 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 用来装评论，评论列表 -->
                 <div class="comments-list" id="comments-list">
                     <!-- 评论将通过JavaScript动态生成 -->
                 </div>
+
+                <!-- 评论输入区域 -->
                 <div class="comment-form">
-                    <textarea class="comment-input" id="comment-input" placeholder="添加评论..."></textarea>
+                    <textarea class="comment-input" id="comment-input" placeholder="勇敢的少年啊快去创造热评~"></textarea>
                     <button class="submit-comment" id="submit-comment">发布</button>
                 </div>
             </div>

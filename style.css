@@ -417,6 +417,7 @@
         }
         
         .update-content {
+            /* 文本行与行之间的垂直间距 */
             line-height: 1.5;
             color: #666;
         }
@@ -437,10 +438,12 @@
             transition: background-color 0.2s;
         }
         
+        /* 第一个子元素的样式 */
         .message-tab:first-child {
             border-radius: 8px 8px 0 0;
         }
         
+        /* 第二个子元素的样式 */
         .message-tab:last-child {
             border-bottom: none;
             border-radius: 0 0 8px 8px;
@@ -459,6 +462,7 @@
             height: 100%;
             background-color: white;
             z-index: 2000;
+            /* 一开始不显示 */
             display: none;
             flex-direction: column;
             padding: 0 10%; /* 左右各10%的内边距 */
