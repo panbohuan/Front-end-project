@@ -1,46 +1,640 @@
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 60px; 
-  height: 100vh; 
-  background-color: #fff; 
-  border-right: 1px solid #eee; 
-  padding: 20px 0; 
-  box-sizing: border-box；
-}
+       /* 选择页面上所有的HTML元素，设置统一的样式 */
+       * {
+            /* 移除所有元素默认的内外边距 */
+            margin: 0;
+            padding: 0;
+            /* border-box：width/height = 内容 + padding + border */
+            box-sizing: border-box;
+        }
+        
+        /* 主容器 */
+        .main-container {
+            display: flex;
+            width: 100%;
+        }
+        
+        /* 左侧边栏区域 */
+        .sidebar-area {
+            width: 80px;
+            height: 100vh;
+            background-color: white;
+            border-right: 1px solid #eee;
+            display: flex;
+            /* 让子元素垂直排成一列 */
+            flex-direction: column;
+            /* 瀑布流模型下侧边栏不滚动 */
+            position: fixed;
+            left: 0;
+            top: 0;
+            /* 设置元素的层叠顺序，让侧边栏显示元素不会被遮盖 */
+            /* 数字越大优先级越高 */
+            z-index: 1000;
+            padding-top: 20px;
+        }
+        
+        /* 侧边栏导航样式 */
+        .sidebar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; 
+            height: 100%; 
+            background-color: #fff; 
+            padding: 10px 0; 
+            box-sizing: border-box;
+            position: relative;
+        }
 
+        /* 图标外部小方块的样式设置 */
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 20%;
+            margin: 10px 0; 
+            color: #333; 
+            /* 去除莫名其妙的文本装饰 */
+            text-decoration: none; 
+            /* ease 先慢后快再慢 */
+            transition: all 0.3s ease; 
+            position: relative;
+            cursor: pointer;
+        }
 
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 20%;
-  margin: 10px 0; 
-  color: #333; 
-  text-decoration: none; 
-  transition: all 0.3s ease; 
-}
+        .sidebar-item:hover::after {
+            /* 使用伪元素时content属性必须设置 */
+            content: "";
+            /* 相对于sidebar-item定位 */
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            /* 元素在垂直方向向上移动自身高度的50% */
+            transform: translateY(-50%);
+            background-color: #000000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            /* 悬浮时方块的大小 */
+            font-size: 14px;           
+            transition: opacity 0.1s;
+            /* 禁止换行 */
+            white-space: nowrap;
+        }
+        
+        .sidebar-item:hover::after {
+            opacity: 0.9;
+        }
+        
+        .pinterest-logo:hover::after { 
+            content: "Pinterest";
+            left: 50px;
+        }
+        
+        .home-icon:hover::after { content: "主页"; }
+        .plus-icon:hover::after { content: "创建"; }
+        .bell-icon:hover::after { content: "更新"; }
+        .chat-icon:hover::after { content: "信息"; }
+        .setting-icon:hover::after { content: "设置"; }
 
+        .sidebar-item:hover {
+            background-color: #e3e1e1; 
+        }
 
-.sidebar-item:hover {
-  background-color: #f0f0f0; 
-}
+        /* 单独设置Pinterest图标的颜色 */
+        .sidebar-item.pin {
+            color: #f70328;
+        }
 
+        .spacer {
+            /* 占据剩余空间的百分之90 */
+            flex-grow: 0.9; 
+        }
 
-.sidebar-item.pin {
-  color: #f70328;
-}
+        .sidebar-item i {
+            font-size: 20px;
+        }
+        
+        /* 右侧内容区域 */
+        .content-area {
+            margin-left: 80px;
+            /* cale为计算函数，允许属性值计算 */
+            /* 父元素宽度的百分之一百减去侧边栏宽度80px */
+            width: calc(100% - 80px);
+        }
+        
+        /* 顶部搜索区域  */
+        .top-search-area {
+            position: fixed;
+            top: 0;
+            left: 80px;
+            right: 0;
+            height: 80px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 900;
+            /* 水平偏移 垂直偏移 模糊半径 颜色选择 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* 搜索框样式 */
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            padding: 8px 16px;
+            background-color: #f1f0f0;
+            /* 占据顶部所有区域 */
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .search-icon {
+            color: #999;
+            margin-right: 8px;
+        }
+        
+        .search-input {
+            flex: 1; 
+            /* 去除原本搜索框的边框 */
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color:#f1f0f0 ;
+        }
+        
+        /* 用户区域样式 */
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* 个人头像样式 */
+        .person {
+            position: relative;
+        }
 
+        .fa-circle-user{
+            font-size: 30px;
+            color: #666;
+        }
 
-.spacer {
-  flex-grow: 0.9; 
-}
+        .fa-circle-user:hover::after {
+            content: "个人";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0; 
+            transition: opacity 0.1s;
+            white-space: nowrap;
+            margin-top: 5px;
+        }
 
+        .fa-circle-user:hover::after {
+            opacity: 0.9;
+        }
 
-.sidebar-item i {
-  font-size: 20px;
-}
+        /* 账户信息*/
+        .chevron-up {
+            position: relative;
+        }
+
+        .fa-chevron-up {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .fa-chevron-up:hover:after {
+            content: "账户";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0; 
+            transition: opacity 0.1s;
+            white-space: nowrap;
+            margin-top: 5px;
+        }
+
+        .fa-chevron-up:hover::after {
+            opacity: 0.9;
+        }
+        
+        /* 瀑布流区域 */
+        .masonry-area {
+            margin-top: 80px;
+            padding: 20px;
+        }
+        
+        /* 瀑布流样式 */
+        .masonry {
+            /* 在pc端显示5列 */
+            column-count: 5;
+            /* 图片与图片之间的间距 */
+            column-gap: 15px;
+            max-width: 1400px;
+            /* 上下外边距为0，左右自动居中 */
+            margin: 0 auto;
+        }
+        
+        .masonry-item {
+            /* 防止元素被截断，确保在同一列，若空间不足，移到下一列 */
+            /* 核心属性 */
+            break-inside: avoid;
+            margin-bottom: 15px;
+            border-radius: 16px;
+            /* 内容溢出时直接隐藏 */
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            background-color: white;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .masonry-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .masonry-img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* 右上角保存按钮 */
+        .save-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e60023;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px; 
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            width: 70px; 
+            text-align: center;
+        }
+        
+        /* 悬浮时出现保存按钮 */
+        .masonry-item:hover .save-btn {
+            opacity: 1;
+        }
+        
+        /* 右下角操作按钮 */
+        .action-buttons {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            opacity: 0;
+            transition: opacity 0.3s;
+            gap: 5px;
+        }
+        
+        .masonry-item:hover .action-buttons {
+            opacity: 1;
+        }
+        
+        .action-btn {
+            width: 36px; 
+            height: 36px; 
+            border-radius: 8px; 
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            color: #555;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            background-color: white;
+            transform: scale(1.1);
+        }
+        
+        /* 侧边栏弹出面板样式 */
+        .sidebar-panel {
+            position: absolute;
+            left: 70px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1001;
+            width: 320px;
+            padding: 20px;
+            display: none;
+        }
+        
+        .create-panel {
+            top: 120px;
+        }
+        
+        .update-panel {
+            top: 200px;
+        }
+        
+        .message-panel {
+            top: 280px;
+            height: 300px;
+        }
+        
+        .panel-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .create-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .create-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            /* 鼠标悬停时变成手型图标 */
+            cursor: pointer;
+            /* transition 设置过渡效果 */
+            transition: background-color 0.2s;
+        }
+        
+        .create-option:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .option-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #ddd;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            /* font-weight 用于调整文本的粗细 */
+            font-weight: bold;
+        }
+        
+        .option-text {
+            /* 占据剩余的位置 */
+            flex: 1;
+        }
+        
+        .option-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .option-desc {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .update-content {
+            line-height: 1.5;
+            color: #666;
+        }
+        
+        .message-tabs {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .message-tab {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .message-tab:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .message-tab:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .message-tab:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* 图片详情页面样式 */
+        .image-detail-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            padding: 0 10%; /* 左右各10%的内边距 */
+        }
+        
+        .image-detail-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            background-color: white;
+        }
+        
+        .back-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .image-detail-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .image-container {
+            height: 50vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .detail-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .comments-section {
+            height: 50vh; 
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-top: 1px solid #eee;
+        }
+        
+        .comments-header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comments-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .like-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .like-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            transition: color 0.2s;
+        }
+        
+        .like-button i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .like-button.liked {
+            color: #e60023;
+        }
+        
+        .comments-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+        
+        .comment {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .comment:last-child {
+            border-bottom: none;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .comment-text {
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .comment-form {
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        
+        .comment-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            resize: none;
+        }
+        
+        .comment-input:focus {
+            border-color: #999;
+        }
+        
+        .submit-comment {
+            margin-top: 10px;
+            background-color: #e60023;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .masonry {
+                column-count: 4;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .masonry {
+                column-count: 2;
+            }
+            .sidebar-area {
+                display: none;
+            }
+            .top-search-area {
+                left: 0;
+            }
+            .content-area {
+                margin-left: 0;
+                width: 100%;
+            }
+            .user-area {
+                gap: 10px;
+            }
+        }
