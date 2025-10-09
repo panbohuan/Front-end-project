@@ -44,102 +44,136 @@
                 <!-- 占位符，用于将设置键顶到最下面 -->
                 <div class="spacer"></div>
 
-    <a href="#" class="sidebar-item">
-      <i class="fas fa-cog"></i>
-    </a >
-  </aside>
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI界面</title>
-    <style>
+                <!-- 设置图标 -->
+                <a href="#" class="sidebar-item setting-icon">
+                    <i class="fas fa-cog"></i>
+                </a>
+                
+                <!-- 创建面板 点击后的内容 -->
+                 <!-- 利用css样式进行隐藏与调出 -->
+                <div class="sidebar-panel create-panel" id="create-panel">
+                    <div class="panel-title">创造</div>
+                    <div class="create-options">
+                        <div class="create-option">
+                            <div class="option-icon">1</div>
+                            <div class="option-text">
+                                <div class="option-title">发布你的图片或视频</div>
+                            </div>
+                        </div>
+                        <div class="create-option">
+                            <div class="option-icon">2</div>
+                            <div class="option-text">
+                                <div class="option-title">创造图版</div>
+                            </div>
+                        </div>
+                        <div class="create-option">
+                            <div class="option-icon">3</div>
+                            <div class="option-text">
+                                <div class="option-title">融合搭配各种点子，构建你的愿景</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更新面板 -->
+                <div class="sidebar-panel update-panel" id="update-panel">
+                    <div class="panel-title">更新</div>
+                    <div class="update-content">
+                        更新即将到来，使用更新来查看pin图和图板中的动态，并获取关于值得探索的主题的提示，更新很快就会发布。
+                    </div>
+                </div>
+                
+                <!-- 消息面板 -->
+                <div class="sidebar-panel message-panel" id="message-panel">
+                    <div class="message-tabs">
+                        <div class="message-tab">消息1</div>
+                        <div class="message-tab">消息2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 60px; 
-  height: 100vh; 
-  background-color: #fff; 
-  border-right: 1px solid #eee; 
-  padding: 20px 0; 
-  box-sizing: border-box；
-}
+        <!-- 右侧内容区域 -->
+        <div class="content-area">
+            <!-- 顶部搜索区域 - 固定位置 -->
+            <div class="top-search-area">
+                <!-- 搜索框 -->
+                <div class="search-box">
+                    <i class="search-icon fas fa-search"></i>
+                    <input type="text" class="search-input" placeholder="搜索">
+                </div>
+                
+                <!-- 用户区域 -->
+                <div class="user-area">
+                    <!-- 个人头像 -->
+                    <div class="person">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </div>
+                    
+                    <!-- 账户信息 -->
+                    <div class="chevron-up">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 瀑布流区域 - 在搜索区域下方 -->
+            <div class="masonry-area">
+                <!-- 瀑布流内容区域 -->
+                <div class="masonry" id="masonry"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 图片详情页面 -->
+    <div class="image-detail-overlay" id="image-detail">
 
+        <!-- 返回按键即文本 -->
+        <div class="image-detail-header">
+            <div class="back-button" id="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回</span>
+            </div>
+        </div>
 
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 20%;
-  margin: 10px 0; 
-  color: #333; 
-  text-decoration: none; 
-  transition: all 0.3s ease; 
-}
+        <!-- 图片与评论区域 -->
+        <div class="image-detail-content">
+            <div class="image-container">
+                <!-- 让javascript来动态加载图片 -->
+                <img src="" alt="详情图片" class="detail-image" id="detail-image">
+            </div>
 
+            <!-- 点赞与评论区域 -->
+            <div class="comments-section">
+                <div class="comments-header">
+                    <div class="comments-title">评论</div>
 
-.sidebar-item:hover {
-  background-color: #f0f0f0; 
-}
+                    <!-- 点赞 -->
+                    <div class="like-section">
+                        <div class="like-button" id="like-button">
+                            <i class="far fa-heart"></i>
+                            <span>点赞</span>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- 用来装评论，评论列表 -->
+                <div class="comments-list" id="comments-list">
+                    <!-- 评论将通过JavaScript动态生成 -->
+                </div>
 
-.sidebar-item.pin {
-  color: #e60023;
-}
+                <!-- 评论输入区域 -->
+                <div class="comment-form">
+                    <textarea class="comment-input" id="comment-input" placeholder="勇敢的少年啊快去创造热评~"></textarea>
+                    <button class="submit-comment" id="submit-comment">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-.spacer {
-  flex-grow: 1; 
-}
-
-
-.sidebar-item i {
-  font-size: 20px;
-}
-    </style>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <aside class="sidebar">
-    <!-- Pinterest 图标 -->
-    <a href=" " class="sidebar-item pin">
-      <i class="fab fa-pinterest"></i>
-    </a >
-    <!-- 主页图标 -->
-    <a href="#" class="sidebar-item">
-      <i class="fas fa-home"></i>
-    </a >
-    <!-- 加号图标 -->
-    <a href="#" class="sidebar-item">
-      <i class="fas fa-plus"></i>
-    </a >
-    <!-- 通知图标 -->
-    <a href="#" class="sidebar-item">
-      <i class="fas fa-bell"></i>
-    </a >
-    <!-- 消息图标 -->
-    <a href="#" class="sidebar-item">
-      <i class="fas fa-comment-dots"></i>
-    </a >
-
-    <div class="spacer"></div>
-
-    <a href="#" class="sidebar-item">
-      <i class="fas fa-cog"></i>
-    </a >
-  </aside>
+    <script src="script.js"></script>
+ 
+  
 </body>
 
 </html>
->>>>>>> f28331df35f2b4da738b55b6e55a5d45c7cdd759
