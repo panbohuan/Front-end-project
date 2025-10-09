@@ -165,7 +165,7 @@
             const commentInput = document.getElementById('comment-input');
             const submitComment = document.getElementById('submit-comment');
             
-            var liked = false; // 记录点赞状态
+            var liked = false; // 记录点赞状态 开始默认为未点赞
             var comments = []; // 存储评论的数组
             
             // 为瀑布流图片添加点击事件监听
